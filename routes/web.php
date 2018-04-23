@@ -23,4 +23,6 @@ Route::get('/student/reservations', 'StudentController@reservations');
 Route::delete('/student/{task}', 'StudentController@destroy');
 
 
+Route::post('/prof/new/locale', 'ProfController@newTask');
+
 Route::get('/proba', 'HomeController@proba');

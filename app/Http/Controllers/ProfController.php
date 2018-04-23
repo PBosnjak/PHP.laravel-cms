@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App;
 use App\User;
 use App\Role;
 use App\Task;
@@ -52,7 +53,21 @@ class ProfController extends Controller
     public function newTask(Request $request)
     {
         $request->user()->authorizeRoles('professor');
-        return view('prof.new');
+        if(null !== $request->input('locale'))
+        {
+            if($request->input('locale') == 'en')
+            {
+                $locale = 'en';
+                App::setLocale('en');
+            }
+            elseif($request->input('locale') == 'hr')
+            {
+                $locale = 'hr';
+                App::setLocale('hr');
+            }
+        }
+        else $locale = 'hr';
+        return view('prof.new', ['locale' => $locale]);
     }
 
     public function store(Request $request)
