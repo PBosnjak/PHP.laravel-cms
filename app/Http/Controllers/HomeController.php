@@ -42,6 +42,7 @@ class HomeController extends Controller
         elseif ($request->user()->hasRole('student'))
         {
             $data = [];
+            $array = [];
             $temp = Task::with('users')->get();
             foreach ($temp as $t)
             {
@@ -50,10 +51,15 @@ class HomeController extends Controller
                     $array[] = $x->pivot->user_id;
                 }
 
-                if(!in_array($request->user()->id, $array)) $data[] = $t;
+                if(isset($array) && !in_array($request->user()->id, $array)) $data[] = $t;
+                unset($array);
             }
             return view('home', ['data' => $data, 'student' => true]);
-
+            //return $array;
+        }
+        else
+        {
+            abort(404);
         }
     }
 

@@ -29,4 +29,25 @@ class StudentController extends Controller
         return redirect('/');
     }
 
+    public function reservations(Request $request)
+    {
+        $approved = [];
+        $not_approved = [];
+        $request->user()->authorizeRoles('student');
+        $tasks = $request->user()->tasks()->get();
+        foreach ($tasks as $task)
+        {
+            if ($task->pivot->approved) $approved[] = $task;
+            else $not_approved[] = $task;
+        }
+
+        return view('student.reservation', ['approved' => $approved, 'not_approved' => $not_approved]);
+    }
+
+    public function destroy(Request $request, Task $task)
+    {
+        $request->user()->authorizeRoles('student');
+        $task->users()->detach($request->user()->id);
+        return redirect('/');
+    }
 }

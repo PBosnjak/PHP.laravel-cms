@@ -66,7 +66,7 @@
 
 @isset($professor)
     @section('content')
-        <form action="{{url('prof/new')}}" method="GET" style="position: relative">
+        <form action="{{url('prof/reservations')}}" method="GET" style="position: relative">
             {{ csrf_field() }}
             <button type="submit" class="btn btn-default col-sm-offset-9">
                 <i class="fa fa-btn fa-plus"></i>Prijave
