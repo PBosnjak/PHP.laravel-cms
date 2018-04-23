@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Role;
+use App\Task;
 
 class HomeController extends Controller
 {
@@ -33,12 +35,25 @@ class HomeController extends Controller
 
         elseif ($request->user()->hasRole('professor'))
         {
-            return view('home', ['professor' => true]);
+            $data = $request->user()->tasks()->get();
+            return view('home', ['data' => $data, 'professor' => true]);
         }
 
-        else
+        elseif ($request->user()->hasRole('student'))
         {
-            return view('home', ['student' => true]);
+            $data = [];
+            $temp = Task::with('users')->get();
+            foreach ($temp as $t)
+            {
+                foreach ($t->users as $x)
+                {
+                    $array[] = $x->pivot->user_id;
+                }
+
+                if(!in_array($request->user()->id, $array)) $data[] = $t;
+            }
+            return view('home', ['data' => $data, 'student' => true]);
+
         }
     }
 
@@ -46,6 +61,6 @@ class HomeController extends Controller
     {
         $user = User::where('id',1)->first();
 
-        return $request->user()->roles()->first()->name;
+        return $request->user()->tasks()->detach();
     }
 }

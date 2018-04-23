@@ -61,6 +61,7 @@ class AdminController extends Controller
     {
         $request->user()->authorizeRoles('admin');
         $user->roles()->detach();
+        $user->tasks()->detach();
         $user->delete();
         return redirect('/');
     }

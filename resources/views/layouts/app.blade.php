@@ -76,5 +76,10 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script>
+        function myFunction() {
+            confirm("Jeste li sigurni?");
+        }
+    </script>
 </body>
 </html>

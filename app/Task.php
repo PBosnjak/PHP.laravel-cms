@@ -12,11 +12,11 @@ class Task extends Model
      * @var array
      */
     protected $fillable = [
-        'task_id', 'user_id'
+        'name', 'name_en', 'goal', 'college_type'
     ];
 
     public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)->withPivot('approved');
     }
 }

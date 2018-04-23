@@ -16,6 +16,7 @@ class CreateTaksUserTable extends Migration
         Schema::create('task_user', function (Blueprint $table) {
             $table->integer('task_id')->unsigned();
             $table->integer('user_id')->unsigned();
+            $table->boolean('approved')->nullable();
         });
     }
 

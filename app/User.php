@@ -34,7 +34,7 @@ class User extends Authenticatable
 
     public function tasks()
     {
-        return $this->belongsToMany(Task::class);
+        return $this->belongsToMany(Task::class)->withPivot('approved');
     }
     /**
      * @param string|array $roles
