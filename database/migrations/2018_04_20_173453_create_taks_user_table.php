@@ -14,7 +14,6 @@ class CreateTaksUserTable extends Migration
     public function up()
     {
         Schema::create('task_user', function (Blueprint $table) {
-            $table->increments('id');
             $table->integer('task_id')->unsigned();
             $table->integer('user_id')->unsigned();
         });
@@ -27,6 +26,6 @@ class CreateTaksUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('role_user');
+        Schema::dropIfExists('task_user');
     }
 }
