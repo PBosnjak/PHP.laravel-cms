@@ -90,7 +90,7 @@
                                                 <td class="table-text">{{ $task->goal }}</td>
                                                 <td class="table-text">{{ $task->college_type }}</td>
                                                 <td>
-                                                    <form action="{{url('student/' . $task->id )}}" method="POST">
+                                                    <form class="delete" action="{{url('student/' . $task->id )}}" method="POST">
                                                         {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
 

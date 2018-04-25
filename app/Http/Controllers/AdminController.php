@@ -41,6 +41,7 @@ class AdminController extends Controller
             $user->update([
                 'name' => $request->input('name'),
                 'email' => $request->input('email'),
+                'college_type' => $request->input('college_type'),
                 'password' => bcrypt($request->input('password'))
             ]);
         }
@@ -48,7 +49,8 @@ class AdminController extends Controller
         {
             $user->update([
                 'name' => $request->input('name'),
-                'email' => $request->input('email')
+                'email' => $request->input('email'),
+                'college_type' => $request->input('college_type')
             ]);
         }
 

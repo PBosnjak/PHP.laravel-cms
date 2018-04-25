@@ -42,6 +42,7 @@ class UserTableSeeder extends Seeder
         $student->name = "Ivo";
         $student->email = "ivo@mail.com";
         $student->password = bcrypt('123456');
+        $student->college_type = "diplomski";
         $student->save();
         $student->roles()->attach($role_student);
 
@@ -49,6 +50,7 @@ class UserTableSeeder extends Seeder
         $student1->name = "David";
         $student1->email = "david@mail.com";
         $student1->password = bcrypt('123456');
+        $student1->college_type = "diplomski";
         $student1->save();
         $student1->roles()->attach($role_student);
 
@@ -56,6 +58,7 @@ class UserTableSeeder extends Seeder
         $student2->name = "Lucija";
         $student2->email = "lucija@mail.com";
         $student2->password = bcrypt('123456');
+        $student2->college_type = "preddiplomski";
         $student2->save();
         $student2->roles()->attach($role_student);
     }

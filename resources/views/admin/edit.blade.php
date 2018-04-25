@@ -5,7 +5,7 @@
         <div class="col-sm-offset-2 col-sm-8">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Uredi zadatak
+                    Uredi korisnika
                 </div>
                 <div class="panel-body">
                     <!-- New Task Form -->
@@ -41,6 +41,17 @@
                                 <select id="finished-project" class="form-control" name="role">
                                     <option value="3">Student </option>
                                     <option value="2">Profesor</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label for="choose-type" class="col-sm-3 control-label">Tip studija</label>
+                            <div class="col-sm-6 ">
+                                <select id="finished" class="form-control" name="college_type">
+                                    <option value=""></option>
+                                    <option value="preddiplomski">Preddiplomski</option>
+                                    <option value="diplomski">Diplomski</option>
+                                    <option value="stručni">Stručni</option>
                                 </select>
                             </div>
                         </div>

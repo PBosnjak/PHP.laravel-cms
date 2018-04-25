@@ -17,6 +17,7 @@ class CreateTaksUserTable extends Migration
             $table->integer('task_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->boolean('approved')->nullable();
+            $table->integer('priority')->nullable();
         });
     }
 

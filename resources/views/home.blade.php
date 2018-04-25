@@ -22,6 +22,7 @@
                                     <th>Ime</th>
                                     <th>E-mail</th>
                                     <th>Uloga</th>
+                                    <th>Tip studija</th>
                                     <th>Uredi</th>
                                     <th>Obriši</th>
                                 </thead>
@@ -32,6 +33,7 @@
                                             <td class="table-text">{{ $user->name }}</td>
                                             <td class="table-text">{{ $user->email }}</td>
                                             <td class="table-text">{{ $user->roles[0]->name }}</td>
+                                            <td class="table-text">{{ $user->college_type }}</td>
                                             <td>
                                                 <!-- Task Edit Button -->
                                                 <form action="{{url('admin/edit/' . $user->id )}}" method="GET" style="display: inline-block;">
@@ -42,7 +44,7 @@
                                                 </form>
                                             </td>
                                             <td>
-                                                <form action="{{url('admin/' . $user->id )}}" method="POST">
+                                                <form class="delete" action="{{url('admin/' . $user->id )}}" method="POST">
                                                     {{ csrf_field() }}
                                                     {{ method_field('DELETE') }}
 
@@ -118,7 +120,7 @@
                                                 </form>
                                             </td>
                                             <td>
-                                                <form action="{{url('prof/' . $task->id )}}" method="POST">
+                                                <form class="delete" action="{{url('prof/' . $task->id )}}" method="POST">
                                                     {{ csrf_field() }}
                                                     {{ method_field('DELETE') }}
 

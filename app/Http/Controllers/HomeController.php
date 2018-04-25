@@ -51,7 +51,7 @@ class HomeController extends Controller
                     $array[] = $x->pivot->user_id;
                 }
 
-                if(isset($array) && !in_array($request->user()->id, $array)) $data[] = $t;
+                if(isset($array) && !in_array($request->user()->id, $array) && $t->college_type == $request->user()->college_type) $data[] = $t;
                 unset($array);
             }
             return view('home', ['data' => $data, 'student' => true]);
